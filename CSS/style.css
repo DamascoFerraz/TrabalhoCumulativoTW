@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Butcherman&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -21,15 +23,19 @@ header {
 header > nav {
     text-align: center;
     padding: 25px;
-    text-align: right;
+    text-align: left;
     margin-right: 10px;
-    font-size: larger;
+    margin-left: 10px;
+    font-size: x-large;
 }
 
 header > nav > a {
-    color: aliceblue;
+    color: rgb(238, 165, 30);
     text-decoration: none;
     padding: 5px;
+    font-family: 'Butcherman';
 }
 
-
+.container {
+    right: 0;
+}
