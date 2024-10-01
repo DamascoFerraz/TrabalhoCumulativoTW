@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: rgb(1, 1, 77);
+    width: 100%;
+    height: 100%;
+}
+
+header > nav {
+    text-align: center;
+    padding: 8px;
+}
+
+header > nav > a {
+    color: aliceblue;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.card {
+    background-color: aliceblue;
+}
