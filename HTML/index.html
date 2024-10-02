@@ -15,7 +15,35 @@
             <a href="produtos.html">Produtos</a>
             <a href="contato.html">Contato</a>
         </nav>
+
     </header>
+
+    <nav class="form-container">
+
+        <form action="../PHP/form_log_handler.php" method="post">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" id="inp-name" required><br>
+
+            <label for="pwd">Senha:</label>
+            <input type="text" name="pwd" id="inp-pwd" required><br>
+
+            <button type="submit">Log in</button>
+        </form>
+        
+        <form action="../PHP/form_sing_handler.php" method="post">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" id="inp-name" required> <br>
+
+            <label for="pwd">Senha:</label>
+            <input type="text" name="pwd" id="inp-pwd" required> <br>
+
+            <label for="email">E-mail:</label>
+            <input type="text" name="email" id="inp-email" required>
+
+            <button type="submit">Sing in</button>
+        </form>
+
+    </nav>
     
 </body>
 </html>

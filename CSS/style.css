@@ -52,3 +52,40 @@ h1{
 .container {
     right: 0;
 }
+
+/* form */
+.form-container{
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    width: 40%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px;
+}
+label{
+    color: white;
+    font-size: larger;
+}
+input{
+    padding: 5px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 68, 0, 0.5);
+    margin-bottom: 5px;
+}
+button{
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    font-size: larger;
+    background-color: rgba(255, 187, 0, 0.5);
+}
