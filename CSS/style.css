@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Butcherman&display=swap');
 
+/* Defaulter */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* gif no body */
 body {
     background-image:url('vaiseembora.gif');
     background-size:100%;
@@ -15,17 +17,20 @@ body {
     width:100%;
 }
 
+/* header config */
 header {
     width: 100%;
     height: 100%;
+    padding: 10px;
 }
 
 header > nav {
     text-align: center;
     padding: 25px;
-    text-align: left;
-    margin-right: 10px;
-    margin-left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 40%;
+    border-radius: 30px;
+    margin: auto;
     font-size: x-large;
 }
 
@@ -36,6 +41,14 @@ header > nav > a {
     font-family: 'Butcherman';
 }
 
+h1{
+    color: rgb(238, 165, 30);
+    padding: 5px;
+    font-family: 'Butcherman';
+    font-size: xx-large;
+}
+
+/* containers config */
 .container {
     right: 0;
 }
