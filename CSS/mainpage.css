@@ -1,4 +1,14 @@
+/* FONTES */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@font-face {
+    font-family: Coraline-text;
+    src: url(../FONTS/coraline/Coraline-Regular.ttf);
+ }
+ @font-face {
+    font-family: Haloween;
+    src: url(../FONTS/halloween_spooky_2/Halloween\ Spooky.otf);
+ }
+/* ---------------------------------------------------------------------------------------------- */
 
 *{
     padding: 0;
@@ -10,19 +20,101 @@
 
 :root {
     --black: #000000;
-    --white: #ffffff;
+    --grey: #808080;
+    --light-grey: #D3D3D3;
+    --white: #b6b5b5;
     --yellow: #f6b002;
-    --blue: #153147;
+    --blue: #0D2C49;
     --orange: #f97300;
   }
 
 body {
     background-color: #00000017;
     font-family: Fredoka, sans-serif;
+    background-color: var(--light-grey);
+    overflow: hidden;
 }
 
-nav{
-    display: flex;
-    flex-direction: row;
+/* HEADER */
+
+nav {
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: var(--white);
+    padding: .7rem 0;
+    z-index: 10;
 }
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-family: Haloween;
+    font-size: x-large;
+    color: var(--blue);
+}
+
+nav .barra-pesquisa {
+    padding: .7rem;
+    background: var(--light-grey);
+    border-radius: 2rem;
+}
+
+nav .barra-pesquisa input {
+    background: transparent;
+    text-align: center;
+    width: 30vw;
+    margin-left: 1rem;
+    font-size: .9rem;
+}
+
+.add-post {
+    display: flex;
+    gap: 30px;
+
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    width: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 2rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: larger;
+    font-weight: 400;
+    background-color: var(--yellow);
+    color: var(--blue);
+}
+
+.profile-name{
+    font-weight: 500;
+    color: var(--black);
+}
+
+.text-name {
+    color: var(--grey);
+}
+
 
