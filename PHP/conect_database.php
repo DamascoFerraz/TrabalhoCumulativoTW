@@ -1,6 +1,6 @@
 <?php
 // credenciais do mysql 
-$dsn = "mysql:host=localhost;dbname=rede_social_gilberto"; //Data Source Name
+$dsn = "mysql:host=localhost;dbname=rede_social_tw"; //Data Source Name
 $dbusername = "root";
 $dbpassword = "123456";
 

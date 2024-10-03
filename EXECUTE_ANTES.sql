@@ -1,4 +1,4 @@
-create database rede_social_gilberto;
+create database rede_social_tw;
 use rede_social_gilberto;
 
 -- TABELAS
