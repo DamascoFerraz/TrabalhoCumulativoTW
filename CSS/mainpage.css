@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+}
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --yellow: #f6b002;
+    --blue: #153147;
+    --orange: #f97300;
+  }
+
+body {
+    background-color: #00000017;
+    font-family: Fredoka, sans-serif;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+}
+

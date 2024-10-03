@@ -9,7 +9,7 @@
 
 /* gif no body */
 body {
-    background-image:url('vaiseembora.gif');
+    background-image:url('../ASSETS/vaiseembora.gif');
     background-size:100%;
     background-repeat: repeat-y;
     background-attachment: fixed;
