@@ -21,12 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){              // checa se o usuario en
 
     $pdo = Null; // reseta as variaveis de consulta
     $stmt = Null;
-
-
-    die();  //corta conexão
+    
+    header("Location:../HTML/index.html");
+    exit();
 } else {
-    header("Location :../HTML/index.html");
+    header("Location:../HTML/index.html");
     exit();
 }
-header("Location :../HTML/index.html");
-exit();
