@@ -11,9 +11,9 @@
         <nav>
         <h1>MyHappyween</h1>
         <br>
-            <a href="index.html">Sobre nós</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="contato.html">Contato</a>
+            <a href="index.php">Sobre nós</a>
+            <a href="mainpage.php">Posts</a>
+            <a href="contato.php">Contato</a>
         </nav>
     </header>
     

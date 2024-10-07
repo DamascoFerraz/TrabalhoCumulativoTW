@@ -6,7 +6,7 @@
         $email = htmlspecialchars($_POST['email']);
 
         if (empty($name) or empty($pwd)){                   // checa se o valor postado no form foi vazio 
-            header("Location :../HTML/index.html");         // coloca como proxima pagina o index
+            header("Location :../PAGES/index.php");         // coloca como proxima pagina o index
             exit();                                         // sai da pagina php e vai para onde esta definido o header
         }
 
@@ -30,20 +30,20 @@
             $stmt = Null;
             $checkemail = Null;
             
-            header("Location:../HTML/index.html");
+            header("Location:../PAGES/index.php");
             exit();
         } else {
             echo("usuario com este email ja existe >:( <br>voltando para pagina de login...");
         }
         
     } else {
-        header("Location:../HTML/index.html");
+        header("Location:../PAGES/index.php");
         exit();
     }
 ?>
 
 <script>
     setTimeout(function() {
-        window.location.href = "../HTML/index.html";
+        window.location.href = "../PAGES/index.php";
     }, 3000);
 </script>

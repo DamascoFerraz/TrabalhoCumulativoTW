@@ -50,14 +50,14 @@ $worked = $conection->multi_query($sqlscript); //executa diversas linhas de quer
     ?>
 
     <hr>
-    <a href="HTML/index.html">voltar manualmente a pagina principal</a>
+    <a href="PAGES/index.php">voltar manualmente a pagina principal</a>
     <br>
     <p>retornando para pagina principal em 10 segundos...</p>
 
     <!-- script para retornar ao index -->
     <script>
         setTimeout(function() {
-            window.location.href = "HTML/index.html";
+            window.location.href = "PAGES/index.php";
         }, 10000);
     </script>
 </body>
