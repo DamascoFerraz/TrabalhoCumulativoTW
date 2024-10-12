@@ -6,7 +6,7 @@
         $email = htmlspecialchars($_POST['email']);
 
         if (empty($name) or empty($pwd)){                   // checa se o valor postado no form foi vazio 
-            header("Location :../PAGES/index.php");         // coloca como proxima pagina o index
+            header("Location :../PAGES/index.php?return=empty_data");         // coloca como proxima pagina o index
             exit();                                         // sai da pagina php e vai para onde esta definido o header
         }
 
@@ -25,25 +25,20 @@
             $query = "INSERT INTO users(username,pwd,email) VALUES (?,?,?)"; //cria query sql com valores a ser definidos ("?")
             $stmt = $pdo->prepare($query); //prepara a consulta SQL para execução
             $stmt->execute([$name,$pwd,$email]); //executa consulta com os valores
-        
+
             $pdo = Null; // reseta as variaveis de consulta
             $stmt = Null;
             $checkemail = Null;
-            
-            header("Location:../PAGES/index.php");
+    
+            header("Location:../PAGES/index.php?return=user_created");
             exit();
         } else {
-            echo("usuario com este email ja existe >:( <br>voltando para pagina de login...");
+            header("Location:../PAGES/index.php?return=user_exists");
+            exit();
         }
         
     } else {
-        header("Location:../PAGES/index.php");
+        header("Location:../PAGES/index.php?return=acces_denied");
         exit();
     }
 ?>
-
-<script>
-    setTimeout(function() {
-        window.location.href = "../PAGES/index.php";
-    }, 3000);
-</script>

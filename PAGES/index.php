@@ -9,10 +9,9 @@
 <body>
 
     <?php
-    if(isset($_GET['created_database'])){
-        $created_database = $_GET['created_database'];
-        echo "<script> var created_database = $created_database </script>";
-    }
+        if(isset($_GET['return'])){
+            echo(str_replace("#","'","<script>var returne = #".$_GET['return']."#;</script>"));
+        }
     ?>
     <header>
         <nav>
@@ -52,23 +51,32 @@
     
         <dialog id="db_created_dialog">
             <?php
-            if(isset($created_database)){
-                if($created_database){
-                    echo("<h2>! MISSING DATABASE !<h2><hr>");
-                    echo("<h3>modelo base do banco de dados criado automaticamente!</h3><br>");
-                    echo("<img src='../ASSETS/database_created_icon.png' alt='databasecreatedicon'><br>");
-                }else{
-                    echo("<h2>! MISSING DATABASE !<h2><hr>");
-                    echo("<h3>erro ao criar base de dados!</h3><br><p>favor informar erro ao manuseador de dados, contact:+55(35)99273-6703 [whatsapp]</p><br>");
-                    echo("<img src='../ASSETS/database-error-icon.png' alt='databaseerroricon'>");
-                };
-                echo("<button onclick='modal.close();'>Fechar</button>");
+            if(isset($_GET['return'])){
+                switch ($_GET['return']){
+                    case 'created_database':
+                        echo "<h2>message</h2><hr>";
+                        echo "<h3>Missing database created</h3>";
+                        break;
+                    case 'user_created':
+                        echo "<h2>message</h2><hr>";
+                        echo "<h3>usuario cadastrado com sucesso</h3>";
+                        break;
+                    case 'user_exists':
+                        echo "<h2>message</h2><hr>";
+                        echo "<h3>e-mail ja cadastrado</h3>";
+                        break;
+                    case 'acces_denied':
+                        echo "<h2>message</h2><hr>";
+                        echo "<h3>acesso recusado!</h3>";
+                        break;
+                }
+                echo "<button onclick='modal.close()'>fechar</button>";
             };
             ?>
         </dialog>
     <script>
         const modal = document.getElementById("db_created_dialog");
-        if(typeof created_database != 'undefined'){
+        if(typeof returne != 'undefined'){
             modal.showModal();
         }
     </script>
