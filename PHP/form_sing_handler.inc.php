@@ -1,11 +1,17 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){              // checa se o usuario entrou na pagina atraves do envio de form
 
+        // tentativa de checagem de credenciais faltantes
+        // if(!isset($_POST['name']) or !isset($_POST['pwd']) or !isset($_POST['email'])){
+        //     header("Location:../PAGES/index.php?return=acces_denied");
+        //     exit();
+        // } 
+
         $name = htmlspecialchars($_POST['name']);           // extrai o valor postado no formulario e bota em var
         $pwd = htmlspecialchars($_POST['pwd']);
         $email = htmlspecialchars($_POST['email']);
 
-        if (empty($name) or empty($pwd)){                   // checa se o valor postado no form foi vazio 
+        if (empty($name) or empty($pwd) or empty($email)){                   // checa se o valor postado no form foi vazio 
             header("Location :../PAGES/index.php?return=empty_data");         // coloca como proxima pagina o index
             exit();                                         // sai da pagina php e vai para onde esta definido o header
         }
