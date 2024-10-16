@@ -9,16 +9,24 @@
 <body>
     <!-- transferencia de variavel php para variavel js -->
     <?php
-        //checa se o usuario ja esta logado, se sim, entra na pagina principal
         session_start();
+        //checa se o usuario ja esta logado, se sim, entra na pagina principal
         if(isset($_SESSION['user'])){
             header("Location:mainpage.php");
             exit;
         }
 
         //checa se tem uma mensagem de retorno
+        //  aqui utilizamos variavel $_GET que é inserida no url
+        //      exemplo:                url.com?[nome da var]=[valor da var]
+        //                              (var fica salva como $_GET['nome da var'])
+        //      exemplo do projeto:     index.php?return=Campo_nao_preenchido
+        //                              (var fica salva como $_GET['return'])
         if(isset($_GET['return'])){
             //metodo para transfirir a tal mensagem de retorno em uma variavel js
+            // o codigo abaixo escreve:
+            //      <script> var returne = 'mensagem de retorno'; </script>
+            //                              ^~~~~~~~~~~~~~~~~~~^-> definida pela var php $_GET['return']
             echo(str_replace("#","'","<script>var returne = #".$_GET['return']."#;</script>"));
         }
     ?>
@@ -40,7 +48,7 @@
             <input type="text" name="email" id="inp-email-login" required><br>
 
             <label for="pwd">Senha:</label>
-            <input type="text" name="pwd" id="inp-pwd-login" required><br>
+            <input type="password" name="pwd" id="inp-pwd-login" required><br>
 
             <button type="submit">Log in</button>
         </form>
@@ -50,7 +58,7 @@
             <input type="text" name="name" id="inp-name-singin" required> <br>
 
             <label for="pwd">Senha:</label>
-            <input type="text" name="pwd" id="inp-pwd-singin" required> <br>
+            <input type="password" name="pwd" id="inp-pwd-singin" required> <br>
 
             <label for="email">E-mail:</label>
             <input type="text" name="email" id="inp-email-singin" required>
@@ -63,7 +71,7 @@
         <dialog id="return_dialog" class="modal">
             <?php
             if(isset($_GET['return'])){
-                // invoca elementos html com conteudo da variavel de retorno
+                // invoca elementos html com conteudo da variavel de retorno (substituindo underlines '_' por espaços)
                 echo "<h2>message</h2><hr>";
                 echo(str_replace("_","&nbsp","{$_GET['return']}"));
                 echo "<hr><button onclick='modal.close()'>Fechar</button>";

@@ -4,6 +4,7 @@
     if(!isset($_SESSION['user'])){
         header("Location:index.php?return=Faça_Login_antes_de_entrar");
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +72,47 @@
                 </aside>
             </div>
 
+            <!-- criar postagem -->
+            <div class="new-post-form">
+                <form action="../PHP/create_post.php" method="post">
+                    <label for="postcontent">Noque você esta pensando?</label>
+                    <input class="input-novo-post" type="text" name="postcontent" id="inpt_post" autocomplete="off" required>
+                    <button class="btn" type="submit">novo post</button>
+                </form>
+            </div>
+
             <!-- POstagens -->
             <div class="main">
+            <?php
+            require_once "../PHP/collect_posts.php";
 
+            foreach($postsarray as $i){
+                echo "<div class='post'>";
+                    echo "<div class='post-user'>";
+                        $query = "SELECT username FROM users where iduser=(?)";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->execute([$i['iduser']]);
+                        $name_of_poster = $stmt->fetch(PDO::FETCH_ASSOC)['username'];
+                        echo $name_of_poster;
+                    echo "</div>";
+                    echo "<div class='post-text'>";
+                        echo $i['postcontent'];
+                    echo "</div>";
+                    echo "<div class='posts-likes'>";
+                        $query = "SELECT * FROM likes where idlikedpost=(?)";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->execute([$i['idpost']]);
+                        echo "Likes:".$stmt->rowCount();
+                    echo "</div>";
+                    echo "<div class='post-time'>";
+                        echo $i['createdat'];
+                    echo "</div>";
+                echo "</div>";
+                echo "---------------------------";
+            }
+
+
+            ?>
             </div>
 
             <!-- Amizades -->
