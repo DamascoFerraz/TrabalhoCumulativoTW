@@ -1,18 +1,33 @@
 <?php
-$dsn = "127.0.0.1:3306"; //endereço do servidor
+$dsn = "127.0.0.1:3306";
 $dbusername = "root";
 $dbpassword = "123456";
 
-$conection = new mysqli($dsn,$dbusername,$dbpassword); //conecta ao servidor de mysql a um objeto msqli
+//aqui conectei pelo msqli para criar o banco de dados, pois achei mais facil que o metodo PDO
+//que já requisita o nome do banco de dados para fazer a conexão
+$conection = new mysqli($dsn,$dbusername,$dbpassword);
 
-$sqlscript= file_get_contents('criar_base.sql'); //pega o conteudo do arquivo script sql e armazena em var
+//aqui utilizaremos um arquivo (criar_base.sql), ele é um script
+//escrito em sql que basicamente cria toda a base do banco de dados
+//necessario para a utilização do 'site'
 
-$worked = $conection->multi_query($sqlscript); //executa diversas linhas de query inseridas na variavel de script no objeto mslqi
+//pega o conteudo do arquivo script sql e armazena em uma var
+$sqlscript= file_get_contents('criar_base.sql');
 
+//executa o script sql para criação da base de banco de dados
+//  multi_query()
+//      executa diversas linhas de codigo em uma sentada só (delicia)
+//aqui automaticamente as funções retornam 0 e 1 dependendo se elas funcionaram ou não
+//então armazenaremos o retorno em uma variavel para saber se ocorreu um erro inesperado
+//ou se funcionou como o esperado
+$worked = $conection->multi_query($sqlscript);
+
+//dependendo se funcionou ou não, armazenaremos uma mensagem na variavel de retorno
 if($worked){
-    $return = 'created_database';
+    $return = 'Database_faltante_criada_com_sucesso_tente_novamente';
 } else{
-    $return = 'fail_creating_database';
+    $return = 'Falha_ao_criar_database_erro_inesperado';
 };
 
+//neste caso, a variavel $_GET, vai ser definida por oque tiver armazenado nessa variavel $return
 header("Location: PAGES/index.php?return={$return}");

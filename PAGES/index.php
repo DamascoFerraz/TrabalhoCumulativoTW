@@ -9,7 +9,16 @@
 <body>
     <!-- transferencia de variavel php para variavel js -->
     <?php
+        //checa se o usuario ja esta logado, se sim, entra na pagina principal
+        session_start();
+        if(isset($_SESSION['user'])){
+            header("Location:mainpage.php");
+            exit;
+        }
+
+        //checa se tem uma mensagem de retorno
         if(isset($_GET['return'])){
+            //metodo para transfirir a tal mensagem de retorno em uma variavel js
             echo(str_replace("#","'","<script>var returne = #".$_GET['return']."#;</script>"));
         }
     ?>
@@ -53,37 +62,10 @@
     <!-- DIALOG COM MENSAGEM DE RETORNO DAS PAGINAS PHP -->
         <dialog id="return_dialog" class="modal">
             <?php
-            // invoca elementos html com conteudo dependendo da variavel de retorno
             if(isset($_GET['return'])){
-                switch ($_GET['return']){
-                    case 'created_database':
-                        echo "<h2>message</h2><hr>";
-                        echo "<h3>Missing database created</h3>";
-                        echo '<img style="height: 80px;" src="../ASSETS/database_created_icon.png" alt="db created icon">';
-                        break;
-                    case 'fail_creating_database':
-                        echo "<h2>message</h2><hr>";
-                        echo "<h3>Missing database!</h3>";
-                        echo "<p>fail to create database</p>";
-                        echo '<img style="height: 80px;" src="../ASSETS/database-error-icon.png" alt="db error icon">';
-                        break;
-                    case 'user_created':
-                        echo "<h2>message</h2><hr>";
-                        echo "<h3>usuario cadastrado com sucesso</h3>";
-                        break;
-                    case 'user_exists':
-                        echo "<h2>message</h2><hr>";
-                        echo "<h3>e-mail ja cadastrado</h3>";
-                        break;
-                    case 'empty_data':
-                        echo "<h2>message</h2><hr>";
-                        echo "<h3>credenciais faltantes</h3>";
-                        break;
-                    case 'acces_denied':
-                        echo "<h2>message</h2><hr>";
-                        echo "<h3>acesso recusado!</h3>";
-                        break;
-                }
+                // invoca elementos html com conteudo da variavel de retorno
+                echo "<h2>message</h2><hr>";
+                echo(str_replace("_","&nbsp","{$_GET['return']}"));
                 echo "<hr><button onclick='modal.close()'>Fechar</button>";
             };
             ?>
@@ -92,6 +74,7 @@
     <!-- SCRIPT PARA MOSTRAR O DIALOG -->
     <script>
         const modal = document.getElementById("return_dialog");
+        // se existir uma mensagem de retorno, exibe o dialogo/modal
         if(typeof returne != 'undefined'){
             modal.showModal();
         }

@@ -1,50 +1,42 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){              // checa se o usuario entrou na pagina atraves do envio de form
 
-        // tentativa de checagem de credenciais faltantes
-        // if(!isset($_POST['name']) or !isset($_POST['pwd']) or !isset($_POST['email'])){
-        //     header("Location:../PAGES/index.php?return=acces_denied");
-        //     exit();
-        // } 
+if ($_SERVER['REQUEST_METHOD'] != 'POST'){
+    header("Location:../PAGES/index.php?return=Acesso_negado");
+    exit();
+}
 
-        $name = htmlspecialchars($_POST['name']);           // extrai o valor postado no formulario e bota em var
-        $pwd = htmlspecialchars($_POST['pwd']);
-        $email = htmlspecialchars($_POST['email']);
+$name = htmlspecialchars($_POST['name']);
+$pwd = htmlspecialchars($_POST['pwd']);
+$email = htmlspecialchars($_POST['email']);
 
-        if (empty($name) or empty($pwd) or empty($email)){                   // checa se o valor postado no form foi vazio 
-            header("Location :../PAGES/index.php?return=empty_data");         // coloca como proxima pagina o index
-            exit();                                         // sai da pagina php e vai para onde esta definido o header
-        }
+if (empty($name) or empty($pwd) or empty($email)){
+    header("Location :../PAGES/index.php?return=Campo_nao_preenchido");
+    exit();
+}
 
-        require_once "conect_database.php";                 //utiliza uma vez o arquivo php (criando o arquivo PDO conectando a database)
-        
-        $checkemail="SELECT COUNT(*) from users where email=(?); "; // cria uma string em sql com um parametro a ser definido
+require_once "conect_database.php";
 
-        $stmt = $pdo->prepare($checkemail); // deixa a string preparada no obj do db
-        $stmt->execute([$email]); //executa a linha sql usando o parametro sendo definido pela variavel
+$query = "SELECT * from users where email=(?);";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$email]);
 
-        $num = $stmt->fetchColumn(); //extrai o valor da coluna selecionada e armazena numa variavel
+if ($stmt->rowCount()>0){
+    header("Location:../PAGES/index.php?return=Email_ja_cadastrado");
+    exit();
+}
 
-        if ($num==0){
-            $stmt = Null;
+//esvazia as variaveis para serem reutilizadas
+$query= Null;
+$stmt = Null;
 
-            $query = "INSERT INTO users(username,pwd,email) VALUES (?,?,?)"; //cria query sql com valores a ser definidos ("?")
-            $stmt = $pdo->prepare($query); //prepara a consulta SQL para execução
-            $stmt->execute([$name,$pwd,$email]); //executa consulta com os valores
+$query = "INSERT INTO users(username,pwd,email) VALUES (?,?,?)";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$name,$pwd,$email]);
 
-            $pdo = Null; // reseta as variaveis de consulta
-            $stmt = Null;
-            $checkemail = Null;
-    
-            header("Location:../PAGES/index.php?return=user_created");
-            exit();
-        } else {
-            header("Location:../PAGES/index.php?return=user_exists");
-            exit();
-        }
-        
-    } else {
-        header("Location:../PAGES/index.php?return=acces_denied");
-        exit();
-    }
+$pdo = Null;
+$stmt = Null;
+$checkemail = Null;
+
+header("Location:../PAGES/index.php?return=Usuario_registrado_com_sucesso");
+exit();
 ?>

@@ -1,3 +1,11 @@
+<?php
+    require_once "../PHP/conect_database.php";
+    //checa se o usuario esta logado, senão, sai da pagina com mensagem
+    if(!isset($_SESSION['user'])){
+        header("Location:index.php?return=Faça_Login_antes_de_entrar");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,6 +30,8 @@
                     <div class="profile-pic">
                         <img src="../ASSETS/Pfp.jpg" alt="Foto de Perfil">
                     </div>
+                    <!-- botão que leva o usuario a pagina php onde ele será deslogado -->
+                    <button id="log_out_btn" class="btn" onclick="location.href = '../PHP/log_out.php'">Log-out</button>
                 </div>
             </div>
         </nav>
@@ -38,8 +48,9 @@
                         <img src="../ASSETS/Pfp.jpg" alt="Foto de Perfil">
                     </div>
                     <div class="profile-name">
-                        <h4>Doggo</h4>
-                        <p class="text-name"> @Doggoistired</p>
+                        <!-- nome do usuario e email mostrado por variavel armazenada na sessao -->
+                        <h4><?php print($_SESSION['user']['username']); ?></h4>
+                        <p class="text-name"> <?php print($_SESSION['user']['email']) ?></p>
                     </div>
                 </a>
 
@@ -73,4 +84,6 @@
         </div>
     </main>
 </body>
+
+
 </html>
