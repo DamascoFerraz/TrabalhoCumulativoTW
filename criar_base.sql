@@ -79,4 +79,5 @@ create table if not exists reportuser(
 );
 
 INSERT INTO users (username, isadmin, pwd, email) VALUES
-('admin', TRUE, 'admin', 'admin@email.com');
+('admin', TRUE, 'admin', 'admin@email.com'),
+('user', FALSE, 'user', 'user@email.com');
