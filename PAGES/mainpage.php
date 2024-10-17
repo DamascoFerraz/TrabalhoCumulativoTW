@@ -107,6 +107,7 @@
                     echo "<div class='post-time'>";
                         echo $i['createdat'];
                     echo "</div>";
+                    echo "<span style='display:none;'>".$i['idpost']."</span>";
                 echo "</div>";
                 echo "---------------------------";
             }
