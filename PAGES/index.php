@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
-    <!-- transferencia de variavel php para variavel js -->
     <?php
         session_start();
         //checa se o usuario ja esta logado, se sim, entra na pagina principal
@@ -70,12 +69,12 @@
     <!-- DIALOG COM MENSAGEM DE RETORNO DAS PAGINAS PHP -->
         <dialog id="return_dialog" class="modal">
             <?php
-            if(isset($_GET['return'])){
-                // invoca elementos html com conteudo da variavel de retorno (substituindo underlines '_' por espaços)
-                echo "<h2>message</h2><hr>";
-                echo(str_replace("_","&nbsp","{$_GET['return']}"));
-                echo "<hr><button onclick='modal.close()'>Fechar</button>";
-            };
+                if(isset($_GET['return'])){
+                    // invoca elementos html com conteudo da variavel de retorno (substituindo underlines '_' por espaços)
+                    echo "<h2>message</h2><hr>";
+                    echo(str_replace("_","&nbsp","{$_GET['return']}"));
+                    echo "<hr><button onclick='modal.close()'>Fechar</button>";
+                };
             ?>
         </dialog>
 

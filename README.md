@@ -44,6 +44,7 @@
 
 >
 >## ideias futuras
->- algoritimo de postagem
->- 
+>- amizades
+>- mensagens diretas????
+>- admin page com funcões de moderação
 >
