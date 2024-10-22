@@ -42,8 +42,9 @@
 >- git & github [diretorio_do_projeto](https://github.com/DamascoFerraz/TrabalhoCumulativoTW)
 >
 
+
 >
 >## ideias futuras
 >- algoritimo de postagem
->- 
+>- Reponsividade, implementando javascript
 >
