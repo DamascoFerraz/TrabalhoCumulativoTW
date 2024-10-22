@@ -42,9 +42,12 @@
 >- git & github [diretorio_do_projeto](https://github.com/DamascoFerraz/TrabalhoCumulativoTW)
 >
 
+
 >
 >## ideias futuras
 >- amizades
 >- mensagens diretas????
 >- admin page com funcões de moderação
+>- algoritimo de postagem
+>- Reponsividade, implementando javascript
 >
