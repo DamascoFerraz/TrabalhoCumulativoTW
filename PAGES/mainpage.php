@@ -73,17 +73,17 @@
             </div>
 
             <!-- criar postagem -->
-            <div class="new-post-form">
-                <form action="../PHP/create_post.php" method="post">
-                    <label for="postcontent">Noque você esta pensando?</label>
-                    <input class="input-novo-post" type="text" name="postcontent" id="inpt_post" autocomplete="off" required>
-                    <button class="btn" type="submit">novo post</button>
-                </form>
-            </div>
+            
 
             <!-- Postagens -->
             <div class="main">
-
+                <div class="new-post-form">
+                    <form action="../PHP/create_post.php" method="post">
+                        <label for="postcontent">Noque você esta pensando?</label>
+                        <input class="input-novo-post" type="text" name="postcontent" id="inpt_post" autocomplete="off" required>
+                        <button class="btn" type="submit">novo post</button>
+                    </form>
+                </div>
                 <!-- PHP para mostrar as postagens -->
                 <?php
                     //coleta posts e armazena em um array
@@ -158,7 +158,6 @@
                             }
                         echo "</div>";
 
-                        echo "---------------------------";
                         $commentsarray = NULL;
                         $_SESSION['this_post'] = NULL;
                     }
