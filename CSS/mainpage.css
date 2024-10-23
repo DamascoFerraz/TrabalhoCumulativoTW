@@ -30,7 +30,7 @@
 
 body {
     font-family: Fredoka, sans-serif;
-    background-color: var(--orange);
+    background-color: var(--light-grey);
     overflow: hidden;
 }
 
@@ -42,15 +42,12 @@ nav {
     position: fixed;
     background-color: var(--white);
     padding: .7rem 0;
-    z-index: 10;
 }
 
 .nav-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    margin: 0 auto;
 }
 
 nav .logo {
@@ -81,10 +78,10 @@ nav .barra-pesquisa input {
 
 /* ----------------------------------------------------------------------------------------------- */
 
-.container {
+/* .container {
     width: 90%;
     margin: 0 auto;
-}
+} */
 
 .profile-pic {
     width: 3rem;
