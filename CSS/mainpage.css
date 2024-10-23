@@ -29,9 +29,8 @@
   }
 
 body {
-    background-color: #00000017;
     font-family: Fredoka, sans-serif;
-    background-color: var(--light-grey);
+    background-color: var(--orange);
     overflow: hidden;
 }
 
@@ -50,6 +49,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 90%;
+    margin: 0 auto;
 }
 
 nav .logo {
@@ -116,5 +117,4 @@ img {
 .text-name {
     color: var(--grey);
 }
-
 
