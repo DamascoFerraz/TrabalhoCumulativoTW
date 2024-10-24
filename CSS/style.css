@@ -95,12 +95,11 @@ form-label{
     font-size: larger;
 }
 .form-control{
-    padding: 5px;
     color: white;
     border: none;
     border-radius: 10px;
     background-color: rgba(255, 68, 0, 0.5);
-    margin-bottom: 5px;
+    
 }
 .card {
     background-color: rgba(0, 0, 0, 0.5) !important;
