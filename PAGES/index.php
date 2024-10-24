@@ -72,8 +72,8 @@
             <div class="col-md-6 mb-4">
                 <div class="card p-4">
                     <nav class='form-container'>
-                    <form class='forms' action="../PHP/form_sing_handler.inc.php" method="POST">
-                        <div class="mb-3">
+                    <form class='form' action="../PHP/form_sing_handler.inc.php" method="POST">
+                        <div class="e">
                             <label for="name" class="form-label">Nome:</label>
                             <input type="text" class="form-control" name="name" id="inp-name-singin" required>
                         </div>
