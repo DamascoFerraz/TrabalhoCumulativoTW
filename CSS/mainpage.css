@@ -8,6 +8,28 @@
     font-family: Haloween;
     src: url(../FONTS/halloween_spooky_2/Halloween\ Spooky.otf);
  }
+/* 
+ html {
+    font-size: 1rem;
+  }
+
+@include media-breakpoint-up(sm) {
+html {
+    font-size: 1.2rem;
+}
+}
+
+@include media-breakpoint-up(md) {
+html {
+    font-size: 1.4rem;
+}
+}
+
+@include media-breakpoint-up(lg) {
+html {
+    font-size: 1.6rem;
+}
+} */
 /* ---------------------------------------------------------------------------------------------- */
 
 *{
@@ -17,11 +39,16 @@
     text-decoration: none;
     border: none;
 }
+html,body{
+    height: 100%;
+    width: 100%;
+}
 
 :root {
     --black: #000000;
     --grey: #808080;
     --light-grey: #D3D3D3;
+    --lighter-grey: #e0e0e0;
     --white: #b6b5b5;
     --yellow: #f6b002;
     --blue: #0D2C49;
@@ -30,16 +57,31 @@
 
 body {
     font-family: Fredoka, sans-serif;
-    background-color: var(--orange);
+    background-color: var(--light-grey);
     overflow: hidden;
+}
+
+.bg-light-gray{
+    background-color: var(--light-grey);
+}
+.bg-gray{
+    background-color: var(--grey);
+}
+.bg-lighter-gray{
+    background-color: var(--lighter-grey);
+}
+.bg-white{
+    background-color: var(--white);
 }
 
 /* HEADER */
 
+
+
 nav {
     width: 100%;
     top: 0;
-    position: fixed;
+    /* position: fixed; */
     background-color: var(--white);
     padding: .7rem 0;
     z-index: 10;
@@ -76,7 +118,10 @@ nav .barra-pesquisa input {
 .add-post {
     display: flex;
     gap: 30px;
+}
 
+.main{
+    background-color: var(--lighter-grey);
 }
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -115,3 +160,6 @@ img {
     color: var(--grey);
 }
 
+.new-post-form{
+    background-color: var(--lighter-grey);
+}

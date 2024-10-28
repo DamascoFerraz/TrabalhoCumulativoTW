@@ -74,4 +74,4 @@ if($returned_user['pwd']!=$pwd){
 $_SESSION['user'] = $returned_user;
 
 //por fim, acessamos a pagina principal do site
-header("Location:../PAGES/mainpage.php");
+header("Location:../PAGES/mainpage.php?return=Log%20in%20bem%20sucedido.%20bem%20vindo(a)");

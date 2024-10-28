@@ -47,12 +47,12 @@
     </header>
 
     <!-- Formulários responsivos -->
-    <div class="container mt-5">
+    <div class="container mt-3 ">
         <div class="row">
             <!-- Form de login -->
             <div class="col-md-6 mb-4">
                 <div class="card p-4">
-                    <nav class='form-containe'>
+                    <nav class='form-container'>
                     <form action="../PHP/form_log_handler.inc.php" method="post">
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail:</label>
@@ -94,18 +94,32 @@
     </div>
 
     <!-- DIALOG COM MENSAGEM DE RETORNO -->
-    <dialog id="return_dialog" class="modal">
-        <?php
-            if(isset($_GET['return'])){
-                echo "<h2>message</h2><hr>";
-                echo(str_replace("_","&nbsp","{$_GET['return']}"));
-                echo "<hr><button class='btn btn-danger' onclick='modal.close()'>Fechar</button>";
-            }
-        ?>
+    <dialog id="return_dialog" class="container toast show ">
+        <div  class="toast-dialog-centered">
+            <div class="toast-content ">
+                
+            <div class="toast-header mt-3">
+                <h4>message</h4>
+            </div>
+
+            <div class="toast-body  ">
+                <?php
+                if(isset($_GET['return'])){
+                    echo(str_replace("_","&nbsp","{$_GET['return']}"));
+                }
+                ?>
+            </div>
+            
+            <div class="toast-footer ">    
+                <button class='btn btn-danger mb-3' onclick='modal.close()'>Fechar</button>
+            </div>
+
+            </div>
+        </div>
     </dialog>
 
     <!-- SCRIPT PARA MOSTRAR O DIALOG -->
-    <script>
+    <script type="text/javascript">
         const modal = document.getElementById("return_dialog");
         if(typeof returne != 'undefined'){
             modal.showModal();

@@ -4,6 +4,9 @@
     if(!isset($_SESSION['user'])){
         header("Location:index.php?return=Faça_Login_antes_de_entrar");
     }
+    if(isset($_GET['return'])){
+        echo(str_replace("#","'","<script>var returne = #".$_GET['return']."#;</script>"));
+    }
 
 ?>
 
@@ -13,13 +16,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../CSS/mainpage.css">
 </head>
 <body>
-    <header>
+    <header class="sticky-top">
         <!-- Header de navegação -->
         <nav>
-            <div class="container nav-container">
+            <div class=" nav-container">
                 <div class="logo">
                     <h1>MyHappyween</h1>
                 </div>
@@ -36,13 +41,12 @@
                 </div>
             </div>
         </nav>
-
     </header>
 
-    <main>
-        <div class="container">
+    <main class="container-fluid h-100">
+        <div class="row h-100">
             <!-- Profile, Menu, Botão de postar post -->
-            <div class="left">
+            <div class="left col-sm-3 sticky-left">
                 <!-- Profile -->
                 <a href="" class="profile">
                     <div class="profile-pic">
@@ -56,8 +60,8 @@
                 </a>
 
                 <!-- Menu de Navegação -->
-                <aside>
-                    <a href="" class="menu-item">
+                <aside class="container">
+                    <a href="" class="menu-item text-sm">
                         <h3>Home</h3>
                     </a>
                     <a href="" class="menu-item">
@@ -76,13 +80,15 @@
             
 
             <!-- Postagens -->
-            <div class="main">
-                <div class="new-post-form">
+            <div class="main col-sm-6 overflow-y-scroll h-100">
+                <div class="new-post-form form form-container sticky-top pt-3">
+
                     <form action="../PHP/create_post.php" method="post">
-                        <label for="postcontent">Noque você esta pensando?</label>
-                        <input class="input-novo-post" type="text" name="postcontent" id="inpt_post" autocomplete="off" required>
-                        <button class="btn" type="submit">novo post</button>
+                        <label for="postcontent" class="form-label w-100">Noque você esta pensando?</label>
+                        <input class="form-control w-100 mt-2" type="text" name="postcontent" id="inpt_post" autocomplete="off" required>
+                        <button class="btn mt-3 mb-2" type="submit">novo post</button>
                     </form>
+
                 </div>
                 <!-- PHP para mostrar as postagens -->
                 <?php
@@ -91,9 +97,9 @@
 
                     foreach($postsarray as $i){
                         //mostrar os posts
-                        echo "<div class='post'>";
+                        echo "<div class='container-fluid card bg-light-gray mb-3'>";
 
-                            echo "<div class='post-user'>";
+                            echo "<div class='post-user h5'>";
                                 $query = "SELECT username FROM users where iduser=(?)";
                                 $stmt = $pdo->prepare($query);
                                 $stmt->execute([$i['iduser']]);
@@ -101,7 +107,7 @@
                                 echo $name_of_poster.":";
                             echo "</div>";
 
-                            echo "<div class='post-text'>";
+                            echo "<div class='post-text '>";
                                 echo $i['postcontent'];
                             echo "</div>";
 
@@ -137,24 +143,26 @@
 
                             // printar comentarios
                             if($commentsarray!=array()){
+                                echo '<div class="card bg-lighter-gray">';
                                 foreach ($commentsarray as $ii){
-                                    echo "<div class='post-coment'>";
-
-                                        echo "<span class='post-coment-author'>";
-                                            $query = "SELECT username FROM users where iduser=(?)";
-                                            $stmt = $pdo->prepare($query);
+                                    echo "<div class='post-coment justify-content-md-center row'>";
+                                    
+                                    echo "<span class='post-coment-author col-md-auto'>";
+                                    $query = "SELECT username FROM users where iduser=(?)";
+                                    $stmt = $pdo->prepare($query);
                                             $stmt->execute([$ii['iduser']]);
                                             $name_of_poster = $stmt->fetch(PDO::FETCH_ASSOC)['username'];
                                             echo ">".$name_of_poster.": ";
                                         echo"</span>";
 
-                                        echo "<span class='post-coment-content'>".$ii['commentcontent']."</span>";
+                                        echo "<span class='post-coment-content col'>".$ii['commentcontent']."</span>";
 
-                                        echo "<span class='post-coment-time'> (".$ii['createdat'].")</span>";
-
-                                    echo "</div>";
-                                }
-                                $_SESSION['this_post'] = NULL;
+                                        echo "<span class='post-coment-time text-right col-sm-auto'> (".$ii['createdat'].")</span>";
+                                        
+                                        echo "</div>";
+                                    }
+                                    $_SESSION['this_post'] = NULL;
+                                echo '</div>';
                             }
                         echo "</div>";
 
@@ -165,12 +173,44 @@
             </div>
 
             <!-- Amizades -->
-            <div class="right">
+            <div class="right col-sm-3">
 
             </div>
 
         </div>
     </main>
+
+    <!-- MENSAGENS/ALERTAS -->
+    <dialog id="return_dialog" class="container toast show ">
+        <div  class="toast-dialog-centered">
+            <div class="toast-content ">
+                
+            <div class="toast-header mt-3">
+                <h4>message</h4>
+            </div>
+
+            <div class="toast-body  ">
+                <?php
+                if(isset($_GET['return'])){
+                    echo(str_replace("_","&nbsp","{$_GET['return']}"));
+                }
+                ?>
+            </div>
+            
+            <div class="toast-footer ">    
+                <button class='btn btn-danger mb-3' onclick='modal.close()'>Fechar</button>
+            </div>
+
+            </div>
+        </div>
+    </dialog>
+        <!-- SCRIPT PARA MOSTRAR O DIALOG -->
+        <script type="text/javascript">
+        const modal = document.getElementById("return_dialog");
+        if(typeof returne != 'undefined'){
+            modal.showModal();
+        }
+        </script>
 </body>
 
 
