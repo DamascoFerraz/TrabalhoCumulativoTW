@@ -71,7 +71,7 @@
                         <h3>Amigos</h3>
                     </a>
                     <a href="" class="menu-item">
-                        <h3>Configurações</h3>
+                        <h3><a href="configpage.html">Configurações</a></h3>
                     </a>
                 </aside>
             </div>
