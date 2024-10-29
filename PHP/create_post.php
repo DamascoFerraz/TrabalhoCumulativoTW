@@ -13,5 +13,5 @@ $query="INSERT into posts (iduser,postcontent) values(?,?)";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$_SESSION['user']['iduser'],$postcontent]);
 
-header("Location:../PAGES/mainpage.php");
+header("Location:../PAGES/mainpage.php?return=Postagem%20publicada");
 exit();
