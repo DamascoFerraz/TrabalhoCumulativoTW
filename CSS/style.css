@@ -16,7 +16,12 @@ body {
     height:100%;
     width:100%;
 }
-
+@media only screen and (max-width: 768px) {
+    body {
+        background-image: none !important;
+        background-color: antiquewhite !important;
+    }
+}
 /* header config */
 header {
     width: 100%;
@@ -34,18 +39,37 @@ header > nav {
     font-size: x-large;
 }
 
-header > nav > a {
+#navbarlink {
     color: rgb(238, 165, 30);
     text-decoration: none;
     padding: 5px;
     font-family: 'Butcherman';
+    font-size: 3rem;
+}
+@media (max-width: 768px) {
+    #navbarlink {
+        color: rgb(238, 165, 30);
+        text-decoration: none;
+        padding: 5px;
+        font-family: 'Butcherman';
+        font-size: 1rem;
+    }
 }
 
-h1{
+.nav-item{
     color: rgb(238, 165, 30);
     padding: 5px;
     font-family: 'Butcherman';
     font-size: xx-large;
+}
+
+@media (max-width: 768px) {
+    .nav-item{
+        color: rgb(238, 165, 30);
+        padding: 5px;
+        font-family: 'Butcherman';
+        font-size: 1rem; 
+    }
 }
 
 /* containers config */
@@ -58,21 +82,19 @@ h1{
     display: flex;
     align-content: center;
     flex-direction: row;
-    width: 40%;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    
 }
-form{
+.forms{
     display: flex;
     flex-direction: column;
     margin: auto;
     padding: 10px;
 }
-label{
+form-label{
     color: white;
     font-size: larger;
 }
-input{
+.form-control{
     padding: 5px;
     color: white;
     border: none;
@@ -80,7 +102,11 @@ input{
     background-color: rgba(255, 68, 0, 0.5);
     margin-bottom: 5px;
 }
-button{
+.card {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: none; /* Remove borda da classe card, se necessário */
+}
+.btn btn-warning w-100{
     margin: auto;
     border: none;
     border-radius: 10px;
