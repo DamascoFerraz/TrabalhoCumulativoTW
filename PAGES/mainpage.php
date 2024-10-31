@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="../CSS/mainpage.css">
 </head>
 <body>
+<!------------------------------------------- Header de navegação--------------------------------------------->
     <header class="sticky-top">
-        <!-- Header de navegação -->
         <nav>
             <div class=" nav-container">
                 <div class="logo">
@@ -45,7 +45,7 @@
 
     <main class="container-fluid h-100">
         <div class="row h-100">
-            <!-- Profile, Menu, Botão de postar post -->
+<!------------------------------------------- Left ------------------------------------------->
             <div class="left col-sm-3 sticky-left">
                 <!-- Profile -->
                 <a href="" class="profile">
@@ -61,7 +61,7 @@
 
                 <!-- Menu de Navegação -->
                 <aside class="container">
-                    <a href="" class="menu-item text-sm">
+                    <a href="mainpage.php" class="menu-item text-sm">
                         <h3>Home</h3>
                     </a>
                     <a href="" class="menu-item">
@@ -71,14 +71,13 @@
                         <h3>Amigos</h3>
                     </a>
                     <a href="" class="menu-item">
-                        <h3><a href="configpage.html">Configurações</a></h3>
+                        <h3><a href="configpage.php">Configurações</a></h3>
                     </a>
                 </aside>
             </div>
 
-                <!-- criar postagem -->
-                
 
+<!------------------------------------------- Main page ------------------------------------------->
             <!-- Postagens -->
             <div class="main col-sm-6 overflow-y-scroll h-100">
                 <div class="new-post-form form form-container sticky-top pt-3">
@@ -172,13 +171,14 @@
                     ?>
                 </div>
 
-            <!-- Amizades -->
+<!----------------------------------------------------- right ----------------------------------------------------->
             <div class="right col-sm-3">
 
             </div>
         </div>
     </main>
 
+<!--/////////////////////////////////////////////////ALERTS MESSAGES//////////////////////////////////////////////////////////////-->
     <!-- MENSAGENS/ALERTAS -->
     <dialog id="return_dialog" class="container toast show ">
         <div  class="toast-dialog-centered">

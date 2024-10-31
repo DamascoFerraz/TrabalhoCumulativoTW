@@ -1,3 +1,13 @@
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- RETIRE O SCRIPT ABAIXO DEPOIS DA PAGINA ESTAR PRONTA -->
+<?php
+    header("Location:../PAGES/index.php?return=Acesso_negado");
+    exit;
+    ?>
+<!-- RETIRE O SCRIPT ACIMA DEPOIS DA PAGINA ESTAR PRONTA -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+
 <?php
     require_once "../PHP/conect_database.php";
     //checa se o usuario esta logado, senão, sai da pagina com mensagem
@@ -21,8 +31,8 @@
     <link rel="stylesheet" href="../CSS/mainpage.css">
 </head>
 <body>
+<!------------------------------------------- Header de navegação--------------------------------------------->
     <header class="sticky-top">
-        <!-- Header de navegação -->
         <nav>
             <div class=" nav-container">
                 <div class="logo">
@@ -45,7 +55,8 @@
 
     <main class="container-fluid h-100">
         <div class="row h-100">
-            <!-- Profile, Menu, Botão de postar post -->
+
+<!------------------------------------------- Left ------------------------------------------->
             <div class="left col-sm-3 sticky-left">
                 <!-- Profile -->
                 <a href="" class="profile">
@@ -70,23 +81,28 @@
                     <a href="" class="menu-item">
                         <h3>Amigos</h3>
                     </a>
-                    <a href="configpage.html" class="menu-item">
-                        <h3>Configurações</h3>
+                    <a href="" class="menu-item">
+                        <h3><a href="configpage.php">Configurações</a></h3>
                     </a>
                 </aside>
             </div>
 
+                <!-- criar postagem -->
+                
+
+<!------------------------------------------- Main page ------------------------------------------->
             <div class="main col-sm-6 overflow-y-scroll h-100">
 
             </div>
 
-            <!-- Amizades -->
+<!----------------------------------------------------- right ----------------------------------------------------->
             <div class="right col-sm-3">
 
             </div>
         </div>
     </main>
 
+<!--/////////////////////////////////////////////////ALERTS MESSAGES//////////////////////////////////////////////////////////////-->
     <!-- MENSAGENS/ALERTAS -->
     <dialog id="return_dialog" class="container toast show ">
         <div  class="toast-dialog-centered">
